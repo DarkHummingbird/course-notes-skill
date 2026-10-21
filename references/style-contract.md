@@ -9,7 +9,7 @@ Never write these in the note body:
 - `老师`, `讲师`, `课堂`, `课件`, `上一讲`, `这一讲`, `本讲`, `今天讲`, `下节`
 - `同学们`, `大家看`, `我们来看`, `这一页`, `这张图`, `课堂上模拟`, `老师提醒`, `老师反复强调`
 - `课堂口径`, `待核实`, `课堂作业`, `老师给大家看`
-- `案例` as an H2 heading (examples belong under knowledge points)
+- `案例` as an H1 or H2 heading (examples belong under knowledge points)
 - Chronological narration: "首先老师讲了……然后老师讲了……最后……"
 - Course logistics: greetings, attendance, breaks, device checks, "课件没发到群里"
 - Self-referential meta: "本文分为五部分", "下面我们进入第二章", "读法建议"
@@ -33,13 +33,13 @@ Allowed in a quote or an example dialogue: "今天怎么样", "大家最熟悉",
 
 ## Structure
 
-- **H1**: `{主题}：{阶段}` or `{主题}`. No "课堂笔记" in the title unless the user asks for it.
+- **Title (optional)**: one `#` line at the very top, e.g. `# {主题}：{阶段}`. No "课堂笔记" genre label unless the user asks for it.
 - **Opening**: one-line definition + one-line mainline. No course review, no lecturer introduction.
-- **H2**: Chinese numerals, `## 一、...`, `## 二、...`.
-- **H3**: decimal numbering, `### 1.1 ...`, `### 1.2 ...`.
-- **H4**: only for sub-steps inside a method; use `####` sparingly.
-- **No H2 named "案例"**. Examples live under the H3 they support.
-- **No "总结" H2** unless it adds a new synthesis (e.g., a three-station evidence chain). A summary that repeats the sections is filler.
+- **H1 (sections)**: Chinese numerals, `# 一、...`, `# 二、...`. Each major section is a top-level heading.
+- **H2 (subsections)**: decimal numbering, `## 1.1 ...`, `## 1.2 ...`.
+- **H3 (sub-substeps)**: `### ...` for details inside a method; use sparingly.
+- **No H1/H2 named "案例"**. Examples live under the H2 they support.
+- **No "总结" H1/H2** unless it adds a new synthesis (e.g., a three-station evidence chain). A summary that repeats the sections is filler.
 
 ## Paragraphs and Tables
 
@@ -74,7 +74,7 @@ Rules:
 When the courseware includes questions with answers:
 
 ```
-### Q1 这个功能不加 AI 解决不了吗？
+## Q1 这个功能不加 AI 解决不了吗？
 
 **框架**：还原场景 → 现在怎么凑合 → 卡在哪 → AI 带来什么 → 不加也行就承认。
 
@@ -98,7 +98,7 @@ Rules:
 
 ## Data and Caveats
 
-- Put uncertain numbers in one short `### 数据说明` at the end.
+- Put uncertain numbers in one short `## 数据说明` at the end.
 - Say what the number is and what it is not: "案例数据，未回原始报告核对" or "业务方测算，不是上线结果".
 - Do not write "课堂口径" or "待核实" next to every number.
 - If a number is essential to the argument and unverified, keep it but mark it once in the data note.
@@ -106,8 +106,8 @@ Rules:
 ## Final Checklist
 
 - [ ] No banned phrases in the body.
-- [ ] H2 uses Chinese numerals; H3 uses decimal numbering.
-- [ ] Every example is under a knowledge point, not under a "案例" H2.
+- [ ] H1 uses Chinese numerals; H2 uses decimal numbering.
+- [ ] Every example is under a knowledge point, not under a "案例" H1/H2.
 - [ ] Every image path exists and the figure is legible.
 - [ ] Tables have consistent columns.
 - [ ] Interview questions have framework + reference answer + supplement + practice prompt.

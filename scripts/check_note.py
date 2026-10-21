@@ -33,8 +33,8 @@ FORBIDDEN = [
     "大家看",
 ]
 
-H2_OK = re.compile(r"^## (?:[一二三四五六七八九十百]+、|数据说明|附录)")
-H3_OK = re.compile(r"^### (?:\d+\.\d+\s|Q\d+\s|数据说明)")
+H1_OK = re.compile(r"^# (?:[一二三四五六七八九十百]+、|数据说明|附录)")
+H2_OK = re.compile(r"^## (?:\d+\.\d+\s|Q\d+\s|数据说明)")
 IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 TABLE_SEP = re.compile(r"^\s*\|[\s:|-]+\|\s*$")
 
@@ -62,21 +62,31 @@ def main() -> int:
                 errors.append(f"L{i}: forbidden phrase {word!r}: {line.strip()[:90]}")
 
     # 2. Headings.
+    h1 = [(i, l) for i, l in enumerate(lines, 1) if l.startswith("# ")]
     h2 = [(i, l) for i, l in enumerate(lines, 1) if l.startswith("## ")]
     h3 = [(i, l) for i, l in enumerate(lines, 1) if l.startswith("### ")]
+
+    # Allow one document title as the first H1; every other H1 must be a section.
+    sections = h1
+    if h1 and not H1_OK.match(h1[0][1]):
+        sections = h1[1:]
+
+    for i, line in sections:
+        if not H1_OK.match(line):
+            errors.append(f"L{i}: H1 section should use Chinese numerals: {line}")
     for i, line in h2:
         if not H2_OK.match(line):
-            errors.append(f"L{i}: H2 should use Chinese numerals: {line}")
-    for i, line in h2 + h3:
+            errors.append(f"L{i}: H2 should be '## 1.1 ...' or '## Q1 ...': {line}")
+    for i, line in h1 + h2 + h3:
         if "案例" in line:
             errors.append(f"L{i}: do not make a '案例' heading; put examples under knowledge points")
     for i, line in h3:
-        if not H3_OK.match(line):
-            errors.append(f"L{i}: H3 should be '### 1.1' or '### Q1': {line}")
-    if len(h2) < 2:
-        warnings.append("only one H2; a full note usually has at least 3–6 sections")
-    if len(h3) < 3:
-        warnings.append("few H3 sections; check that methods are broken down")
+        if re.match(r"^### \d+\.\d+\s", line):
+            errors.append(f"L{i}: subsection looks like H3; use '## 1.1 ...' for subsections")
+    if len(sections) < 2:
+        warnings.append("only one H1 section; a full note usually has at least 3–6 sections")
+    if len(h2) < 3:
+        warnings.append("few H2 subsections; check that methods are broken down")
 
     # 3. Images exist.
     for i, line in enumerate(lines, 1):
@@ -123,7 +133,7 @@ def main() -> int:
             errors.append(f"L{i}: empty heading")
 
     print(f"note: {note}")
-    print(f"lines: {len(lines)} | H2: {len(h2)} | H3: {len(h3)} | tables: {table_count} | examples: {example_count}")
+    print(f"lines: {len(lines)} | H1: {len(h1)} | H2: {len(h2)} | H3: {len(h3)} | tables: {table_count} | examples: {example_count}")
 
     if warnings:
         print("\nWARNINGS")

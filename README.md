@@ -7,7 +7,7 @@ It encodes the workflow and the style constraints learned from the `需求与立
 - group by concept and method, not by chronology;
 - no lecturer voice (`老师 / 课堂 / 课件 / 上一讲 / 这一讲`);
 - examples live under the knowledge point they prove;
-- Chinese-numeral H2 headings, decimal H3 headings;
+- Chinese-numeral H1 headings, decimal H2 headings;
 - courseware figures captured and cropped locally;
 - interview questions kept as framework + reference answer + practice prompt;
 - a short data note instead of per-paragraph "课堂口径".

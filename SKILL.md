@@ -97,9 +97,9 @@ Extract into these buckets before writing:
 
 Then build the spine:
 
-- One H2 per stage or big question.
-- One H3 per method or decision.
-- Each H3 should answer: what is it → how to do it → example → output/check.
+- One H1 per stage or big question.
+- One H2 per method or decision.
+- Each H2 should answer: what is it → how to do it → example → output/check.
 - If a bucket has no source material, leave it out. Do not invent.
 
 ### 5. Weave examples under points
@@ -107,7 +107,7 @@ Then build the spine:
 This is the most important structural rule.
 
 - Put each example immediately after the point it proves, as a blockquote: `> **例｜...**` or `> **反例｜...**`.
-- Do not create an H2 called "案例" or "课堂案例".
+- Do not create an H1/H2 called "案例" or "课堂案例".
 - If one case illustrates several methods (e.g., a single project used for problem definition, user research, and demand pool), split it into fragments and place each fragment under the relevant method.
 - Keep the case's concrete details: who, when, what they said, the numbers, what was tried, why it failed.
 - End each example with one sentence: what it proves, or what the reader should do differently.
@@ -117,14 +117,14 @@ This is the most important structural rule.
 
 Follow `references/style-contract.md` exactly. The short version:
 
-- H1: `{主题}：{阶段}` — no "课堂笔记" genre label.
+- H1: `# 一、...`, `# 二、...` — each major section is a top-level heading. An optional document title may sit above them as a single `#` line.
 - One-line definition, one-line mainline.
-- H2: `## 一、...`, `## 二、...`.
-- H3: `### 1.1 ...`, `### 1.2 ...`.
+- H2: `## 1.1 ...`, `## 1.2 ...`.
+- H3: `### ...` for sub-substeps inside a method.
 - Direct assertions, imperative guidance, no lecturer voice.
 - Tables for steps, fields, comparisons, and decision matrices.
 - Figures from the courseware at the point they explain.
-- Interview questions: `### Q1 ...` with `**框架**`, `**参考话术**`, `**补充**`, `**换成你的**`.
+- Interview questions: `## Q1 ...` with `**框架**`, `**参考话术**`, `**补充**`, `**换成你的**`.
 - One short data note at the end; no per-paragraph "课堂口径".
 
 ### 7. QA and deliver
